@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import SimpleMap from './components/SimpleMap'
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+        </header>
+        <SimpleMap/>
     </div>
   );
 }
