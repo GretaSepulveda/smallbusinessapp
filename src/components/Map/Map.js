@@ -17,7 +17,7 @@ class Map extends PureComponent {
     return (
       <div className="map">
         <GoogleMapReact
-          bootstrapURLKeys={{ key: process.env.REACT_APP_MAPS_API_KEY }}
+         bootstrapURLKeys={{ key: 'AIzaSyDLcXJX9mkKhUOTwCrzdUfOjbGVKnisc5M'}}
           defaultCenter={ center }
           defaultZoom={ zoom }
         >
