@@ -1,0 +1,35 @@
+.root {
+    flex-grow: 1
+  }
+  
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  
+  
+  .nav_link {
+    text-decoration: none !important;
+  }
+  
+  .links > .nav_link {
+    margin: 0 1rem;
+  }
+  
+  .nav_link:hover {
+    -webkit-stroke-color: #FFFFFF;
+    -webkit-fill-color: #FFFFFF;
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.75);
+  }
+  
+  
+  
+  
+  
+  .status {
+    background-color: lightgrey;
+    color: grey;
+    text-align: left;
+    padding: .3rem 1.5rem;
+  }

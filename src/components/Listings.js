@@ -1,45 +1,58 @@
 import React from 'react';
-// import Listings from './components/Listings'
-import { Container, Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core'
-// import listings from '../listings.json'
-// import DeleteIcon from '@material-ui/icons/Delete'
+import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
+import { TableRow, Table, TableHead, TableCell, TableBody } from '@material-ui/core';
 
-const Listings = (props) => {
-  console.log(props)
 
-  debugger
+const data = require('../listings.json');
+
+
+const useStyles = makeStyles({
+  table: {
+    maxWidth: '90vw',
+    margin: 'auto'
+  }
+});
+
+const Listings = props => {
+  const classes = useStyles();
   return (
-    <Container maxWidth="lg" className="car-container">
-      <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Id</TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell>Description</TableCell>
-              <TableCell>Hours</TableCell>
-              <TableCell>Address</TableCell>
-              {/* <TableCell>Delete</TableCell> */}
-            </TableRow>
-          </TableHead>
-            <TableBody>
-              {props.listings.map((listing, idx) => (
-              <TableRow key={listing.id}>
-                <TableCell component="th" scope="row">{listing.id}</TableCell>
-                <TableCell>{listing["Name"]}</TableCell>
-                <TableCell>{listing["Description"]}</TableCell>
-                <TableCell>{listing["Hours"]}</TableCell>
-                <TableCell>{listing["Address"]}</TableCell>
-                {/* <TableCell>
-                  <DeleteIcon
-                    onClick={() => props.removeCar(idx)}
-                    className="icon text-red" />
-                </TableCell> */}
+    <Table className={ classes.table }>
+      <TableHead>
+        <TableRow>
+          <TableCell align="left">Name</TableCell>
+          <TableCell align="left">Description</TableCell>
+          <TableCell align="left">Hours</TableCell>
+          <TableCell align="left">Address</TableCell>
+          <TableCell align="left">Delete</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody className="">
+        {
+          data.map(listing => {
+            return (
+              <TableRow>
+                <TableCell align="left">
+                  <Link
+                    to={{
+                      pathname: `/listing/${ listing.name }`,
+                      state: { listing }
+                    }}
+                  >
+                    { listing.name }
+                  </Link>
+                </TableCell>
+                <TableCell align="left">{ listing.description }</TableCell>
+                <TableCell align="left">{ listing.hours }</TableCell>
+                <TableCell align="left">{ listing.address }</TableCell>
+                <TableCell align="left">✕</TableCell>
               </TableRow>
-              ))}
-            </TableBody>
-        </Table>
-    </Container>
-  )
-}
+            )
+          })
+        }
+      </TableBody>
+    </Table>
+  );
+};
 
-export default Listings
+export default Listings;
